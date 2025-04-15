@@ -9,6 +9,8 @@
   "author": "itelet",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^29.7.0"
+    "@types/node": "^22.14.1",
+    "jest": "^29.7.0",
+    "typescript": "^5.8.3"
   }
 }
