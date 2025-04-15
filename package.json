@@ -1,0 +1,14 @@
+{
+  "name": "due-date",
+  "version": "1.0.0",
+  "description": "emarsys-intro-task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "itelet",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
