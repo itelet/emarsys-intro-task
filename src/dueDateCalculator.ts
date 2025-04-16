@@ -1,9 +1,11 @@
-module.exports = function CalculateDueDate({
-  date,
-  time,
+export function CalculateDueDate({
+  submitDate,
+  turnaroundTime,
 }: {
-  date: string;
-  time: number;
+  submitDate: Date;
+  turnaroundTime: number;
 }) {
-	return null;
-};
+  return null;
+}
+
+module.exports = CalculateDueDate;
