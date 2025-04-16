@@ -1,4 +1,4 @@
-const CalculateDueDate = require("../../src/dueDateCalculator");
+const calculateDueDate = require("../../src/dueDateCalculator");
 
 describe("due-date-calculator", () => {
   it("default test case", () => {
@@ -7,7 +7,7 @@ describe("due-date-calculator", () => {
 
     const expectedOutput = new Date(2025, 3, 17, 14, 12);
 
-    const result = CalculateDueDate({ submitDate, turnaroundTime });
+    const result = calculateDueDate({ submitDate, turnaroundTime });
     expect(result).toEqual(expectedOutput);
   });
 
@@ -19,7 +19,7 @@ describe("due-date-calculator", () => {
 			console.log('invalidDate: ', invalidDate);
 
 			expect(() => {
-				CalculateDueDate({ submitDate: invalidDate, turnaroundTime });
+				calculateDueDate({ submitDate: invalidDate, turnaroundTime });
 			}).toThrow("Submit date must be a valid Date object");
 		});
 
@@ -28,7 +28,7 @@ describe("due-date-calculator", () => {
 			const turnaroundTime = 16;
 
 			expect(() => {
-				CalculateDueDate({ submitDate: invalidDate, turnaroundTime });
+				calculateDueDate({ submitDate: invalidDate, turnaroundTime });
 			}).toThrow("Submit date must be a valid Date object");
 		});
 
@@ -37,7 +37,7 @@ describe("due-date-calculator", () => {
 			const turnaroundTime = "invalid-time";
 
 			expect(() => {
-				CalculateDueDate({ submitDate: invalidDate, turnaroundTime });
+				calculateDueDate({ submitDate: invalidDate, turnaroundTime });
 			}).toThrow("Turnaround time must be a positive number");
 		});
 
@@ -46,7 +46,7 @@ describe("due-date-calculator", () => {
 			const turnaroundTime = -16;
 
 			expect(() => {
-				CalculateDueDate({ submitDate: invalidDate, turnaroundTime });
+				calculateDueDate({ submitDate: invalidDate, turnaroundTime });
 			}).toThrow("Turnaround time must be a positive number");
 		});
 
@@ -55,7 +55,7 @@ describe("due-date-calculator", () => {
 			const turnaroundTime = 8;
 
 			expect(() => {
-				CalculateDueDate({ submitDate: invalidDate, turnaroundTime });
+				calculateDueDate({ submitDate: invalidDate, turnaroundTime });
 			}).toThrow("Submit date must be during a work day (Monday to Friday)");
 		});
 
@@ -64,7 +64,7 @@ describe("due-date-calculator", () => {
 			const turnaroundTime = 8;
 
 			expect(() => {
-				CalculateDueDate({ submitDate: invalidDate, turnaroundTime });
+				calculateDueDate({ submitDate: invalidDate, turnaroundTime });
 			}).toThrow("Submit date must be during working hours (9AM to 5PM)");
 		});
   });
@@ -76,7 +76,7 @@ describe("due-date-calculator", () => {
 
 			const expectedOutput = new Date(2025, 3, 15, 14, 12);
 
-			const result = CalculateDueDate({ submitDate, turnaroundTime });
+			const result = calculateDueDate({ submitDate, turnaroundTime });
 			expect(result).toEqual(expectedOutput);
 		});
 
@@ -86,7 +86,7 @@ describe("due-date-calculator", () => {
 
 			const expectedOutput = new Date(2025, 3, 16, 10, 12);
 
-			const result = CalculateDueDate({ submitDate, turnaroundTime });
+			const result = calculateDueDate({ submitDate, turnaroundTime });
 			expect(result).toEqual(expectedOutput);
 		});
 
@@ -96,7 +96,7 @@ describe("due-date-calculator", () => {
 
 			const expectedOutput = new Date(2025, 3, 16, 10, 0);
 
-			const result = CalculateDueDate({ submitDate, turnaroundTime });
+			const result = calculateDueDate({ submitDate, turnaroundTime });
 			expect(result).toEqual(expectedOutput);
 		});
 
@@ -106,7 +106,17 @@ describe("due-date-calculator", () => {
 
 			const expectedOutput = new Date(2025, 3, 17, 9, 0);
 
-			const result = CalculateDueDate({ submitDate, turnaroundTime });
+			const result = calculateDueDate({ submitDate, turnaroundTime });
+			expect(result).toEqual(expectedOutput);
+		});
+    
+		it("entry + 1 working week in hours (40)", () => {
+			let submitDate = new Date(2025, 3, 15, 9, 0);
+			let turnaroundTime = 40;
+
+			const expectedOutput = new Date(2025, 3, 22, 9, 0);
+
+			const result = calculateDueDate({ submitDate, turnaroundTime });
 			expect(result).toEqual(expectedOutput);
 		});
   });
@@ -118,7 +128,7 @@ describe("due-date-calculator", () => {
 
 			const expectedOutput = new Date(2025, 3, 21, 10, 0);
 
-			const result = CalculateDueDate({ submitDate, turnaroundTime });
+			const result = calculateDueDate({ submitDate, turnaroundTime });
 			expect(result).toEqual(expectedOutput);
 		});
   });
