@@ -71,17 +71,55 @@ describe("due-date-calculator", () => {
 
   describe("successful test cases", () => {
     it("entry + 4 hours", () => {
+			let submitDate = new Date(2025, 3, 15, 10, 12);
+			let turnaroundTime = 4;
 
+			const expectedOutput = new Date(2025, 3, 15, 14, 12);
+
+			const result = CalculateDueDate({ submitDate, turnaroundTime });
+			expect(result).toEqual(expectedOutput);
 		});
 
-    it("entry + 8 hours", () => {});
+    it("entry + 8 hours", () => {
+			let submitDate = new Date(2025, 3, 15, 10, 12);
+			let turnaroundTime = 8;
 
-    it("entry + 9 hours", () => {});
+			const expectedOutput = new Date(2025, 3, 16, 10, 12);
 
-    it("entry + 16 hours", () => {});
+			const result = CalculateDueDate({ submitDate, turnaroundTime });
+			expect(result).toEqual(expectedOutput);
+		});
+
+    it("entry + 9 hours", () => {
+			let submitDate = new Date(2025, 3, 15, 9, 0);
+			let turnaroundTime = 9;
+
+			const expectedOutput = new Date(2025, 3, 16, 10, 0);
+
+			const result = CalculateDueDate({ submitDate, turnaroundTime });
+			expect(result).toEqual(expectedOutput);
+		});
+
+    it("entry + 16 hours", () => {
+			let submitDate = new Date(2025, 3, 15, 9, 0);
+			let turnaroundTime = 16;
+
+			const expectedOutput = new Date(2025, 3, 17, 9, 0);
+
+			const result = CalculateDueDate({ submitDate, turnaroundTime });
+			expect(result).toEqual(expectedOutput);
+		});
   });
 
-  describe("edge cases", () => {
-    it("should handle weekend", () => {});
+  describe.only("edge cases", () => {
+    it("should handle weekend", () => {
+			let submitDate = new Date(2025, 3, 18, 15, 0);
+			let turnaroundTime = 3;
+
+			const expectedOutput = new Date(2025, 3, 21, 10, 0);
+
+			const result = CalculateDueDate({ submitDate, turnaroundTime });
+			expect(result).toEqual(expectedOutput);
+		});
   });
 });
