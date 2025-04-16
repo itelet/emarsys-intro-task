@@ -111,7 +111,7 @@ describe("due-date-calculator", () => {
 		});
   });
 
-  describe.only("edge cases", () => {
+  describe("edge cases", () => {
     it("should handle weekend", () => {
 			let submitDate = new Date(2025, 3, 18, 15, 0);
 			let turnaroundTime = 3;
