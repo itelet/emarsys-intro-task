@@ -4,7 +4,7 @@
   "description": "emarsys-intro-task",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "npx tsc && jest --verbose"
   },
   "author": "itelet",
   "license": "ISC",
